@@ -1,0 +1,20 @@
+pluginManagement {
+    plugins {
+        id 'com.github.johnrengelman.shadow' version '8.1.1'
+    }
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'word-drawer'
+include 'lib'
+include 'cli'
+include 'web'
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}

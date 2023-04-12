@@ -1,0 +1,9 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' apply false
+}
+
+group 'com.github.pawelkowalski92'
+
+subprojects {
+    apply plugin: 'com.github.johnrengelman.shadow'
+}

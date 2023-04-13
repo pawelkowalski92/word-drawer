@@ -6,4 +6,13 @@ group 'com.github.pawelkowalski92'
 
 subprojects {
     apply plugin: 'com.github.johnrengelman.shadow'
+
+    tasks.withType(JavaExec).configureEach {
+        def resourcesDir = project.sourceSets['main'].output.resourcesDir
+        if (project.hasProperty('tracingAgent')) {
+            def nativeImageConfigLocation = "${resourcesDir}/META-INF/native-image"
+            println "Tracing agent enabled, configuration will be saved in: ${nativeImageConfigLocation}"
+            jvmArgs = ["-agentlib:native-image-agent=config-output-dir=${nativeImageConfigLocation}"]
+        }
+    }
 }
